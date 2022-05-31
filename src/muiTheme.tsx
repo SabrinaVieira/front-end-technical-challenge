@@ -9,11 +9,11 @@ import { createTheme } from '@mui/material/styles';
           white: "#fff",
         },
         background: {
-          paper: "#bfe0ff",
-          default: "#fff",
+          paper: "#fff",
+          default: "#bfe0ff",
         },
         primary: {
-        main: "#6c6c6c",
+        main: "#131350",
         },
         secondary: {
           main: "#adcb6c",

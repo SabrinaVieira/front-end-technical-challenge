@@ -1,10 +1,16 @@
 import React from 'react';
+import CssBaseline from '@mui/material/CssBaseline';
+import { ThemeProvider } from '@mui/material/styles';
+import { muiTheme } from './muiTheme';
+import PageLayout from './components/PageLayout';
+
 
 function App() {
   return (
-    <div>
-      <h1>Good luck!</h1>
-    </div>
+    <ThemeProvider theme={muiTheme}>
+      <CssBaseline />
+      <PageLayout />
+    </ThemeProvider>
   );
 }
 
