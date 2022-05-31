@@ -5,6 +5,7 @@ import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import Container from '@mui/material/Container'
 import Header from './Header';
+import Map from './Map';
 
 const BoxSection = styled(Paper)(() => ({
     padding: "16px",
@@ -12,7 +13,7 @@ const BoxSection = styled(Paper)(() => ({
 }));
 
 
-export default function PageLayout() {
+export default function PageLayout(): JSX.Element {
     return (
         <>
             <Header />
@@ -20,9 +21,9 @@ export default function PageLayout() {
                 <Box sx={{ maxWidth: 'xl' }}>
                     <Grid container
                         spacing={2}
-                        sx={{
-                            my: 1,
-                        }}>
+                        style={{ width: "100%"}}
+                        sx={{my: 1}}
+                        >
                         <Grid item xs={6}>
                             <BoxSection>Filtro de pesquisa por nome</BoxSection>
                         </Grid>
@@ -33,7 +34,9 @@ export default function PageLayout() {
                             <BoxSection>Listagem</BoxSection>
                         </Grid>
                         <Grid item xs={7}>
-                            <BoxSection>Mapa</BoxSection>
+                            <BoxSection>
+                                <Map/>
+                            </BoxSection>
                         </Grid>
                     </Grid>
                 </Box>
