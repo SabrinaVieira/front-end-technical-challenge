@@ -1,11 +1,10 @@
 import React from 'react'
 import { styled } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
-import Grid from '@mui/material/Grid';
-import Container from '@mui/material/Container'
-import Header from './Header';
-import Map from './Map';
+import { Box, Paper, Grid, Container } from '@mui/material';
+import Header from '../components/Header';
+import Map from '../components/Map';
+import List from '../components/List';
+import SearchField from '../components/SearchField';
 
 const BoxSection = styled(Paper)(() => ({
     padding: "16px",
@@ -13,7 +12,7 @@ const BoxSection = styled(Paper)(() => ({
 }));
 
 
-export default function PageLayout(): JSX.Element {
+export default function Page(): JSX.Element {
     return (
         <>
             <Header />
@@ -21,21 +20,27 @@ export default function PageLayout(): JSX.Element {
                 <Box sx={{ maxWidth: 'xl' }}>
                     <Grid container
                         spacing={2}
-                        style={{ width: "100%"}}
-                        sx={{my: 1}}
-                        >
+                        style={{ width: "100%" }}
+                        sx={{ my: 1 }}
+                    >
                         <Grid item xs={6}>
-                            <BoxSection>Filtro de pesquisa por nome</BoxSection>
+                            <BoxSection>
+                                <SearchField />
+                            </BoxSection>
                         </Grid>
                         <Grid item xs={6}>
-                            <BoxSection>Filtro de pesquisa por faturamento</BoxSection>
+                            <BoxSection>
+                                <SearchField />
+                            </BoxSection>
                         </Grid>
                         <Grid item xs={5}>
-                            <BoxSection>Listagem</BoxSection>
+                            <BoxSection>
+                                <List />
+                            </BoxSection>
                         </Grid>
                         <Grid item xs={7}>
                             <BoxSection>
-                                <Map/>
+                                <Map />
                             </BoxSection>
                         </Grid>
                     </Grid>

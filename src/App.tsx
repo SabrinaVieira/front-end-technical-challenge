@@ -1,15 +1,15 @@
 import React from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@mui/material/styles';
-import { muiTheme } from './muiTheme';
-import PageLayout from './components/PageLayout';
+import { muiTheme } from './style/muiTheme';
+import Page from './containers/Page';
 
 
 function App() {
   return (
     <ThemeProvider theme={muiTheme}>
       <CssBaseline />
-      <PageLayout />
+      <Page />
     </ThemeProvider>
   );
 }
