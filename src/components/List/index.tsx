@@ -63,6 +63,25 @@ export default function List(): JSX.Element {
   const [rows, setRows] = useState(places);
 
 
+  const copyOfListOfObjects = [...places];
+
+  function updateObjects(places: any) {
+
+    return places.map((place: any) => {
+      // const newPlace = {...place};
+
+      const new_obj = { ...place, ...place.name, revenue: place.revenue}
+
+      // Object.keys(newPlace).map((property) => {
+      //   newPlace[property] = "Updated value";
+      // });
+  
+      return new_obj;
+    });
+  }
+
+  console.log(updateObjects(places))
+
   return (
 
       <div style={{ height: 400, width: '100%' }}>
