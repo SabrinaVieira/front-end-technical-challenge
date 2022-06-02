@@ -1,22 +1,24 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { styled } from '@mui/material/styles';
-import { Box, Paper, Grid, Container } from '@mui/material';
+import { Box, Paper, Grid } from '@mui/material';
 import Header from '../components/Header';
 import Map from '../components/Map';
 import List from '../components/List';
 import SearchField from '../components/SearchField';
+import { StoreDataContext } from '../providers/SearchProvider';
 
 const BoxSection = styled(Paper)(() => ({
     padding: "16px",
     textAlign: 'center',
 }));
 
-
 export default function Page(): JSX.Element {
+
+
     return (
-        <>
+        <div style={{ height: '100vh' }}>
             <Header />
-            <Container>
+            <div style={{ maxWidth: '90%', margin: 'auto' }}>
                 <Box sx={{ maxWidth: 'xl' }}>
                     <Grid container
                         spacing={2}
@@ -25,12 +27,12 @@ export default function Page(): JSX.Element {
                     >
                         <Grid item xs={6}>
                             <BoxSection>
-                                <SearchField />
+                                <SearchField searchType="loja" searchPlaceholder="Pesquisa por nome"/>
                             </BoxSection>
                         </Grid>
                         <Grid item xs={6}>
                             <BoxSection>
-                                <SearchField />
+                                <SearchField searchType="faturamento" searchPlaceholder="R$ 15.000,00"/>
                             </BoxSection>
                         </Grid>
                         <Grid item xs={5}>
@@ -45,7 +47,7 @@ export default function Page(): JSX.Element {
                         </Grid>
                     </Grid>
                 </Box>
-            </Container>
-        </>
+            </div>
+        </div>
     )
 }

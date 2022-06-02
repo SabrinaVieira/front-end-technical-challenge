@@ -1,28 +1,29 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import localities from '../../data/data.json';
 import { ILocalities } from '../../data/interface';
 import { FormControl, InputLabel, OutlinedInput, InputAdornment } from '@mui/material';
-import { TextField } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
+import { StoreDataContext } from '../../providers/SearchProvider';
 
 const places = localities.stores
 
-export default function SearchField(): JSX.Element {
+interface ISearchField {
+  searchType: string;
+  searchPlaceholder: string;
+};
+
+export default function SearchField({ searchType, searchPlaceholder }: ISearchField): JSX.Element {
+  const { setStoredata } = useContext(StoreDataContext);
   const [query, setQuery] = useState("");
-  const [searchedplacesResults, setSearchedPlacesResults] = useState<ILocalities[]>([])
 
   function handleChange(e: any) {
     const { value } = e.target;
     setQuery(value);
 
-    console.log({value})
     let matchingNames: ILocalities[] = [];
 
     if (value.length > 0) {
       for (let local of places) {
-        if (matchingNames.length > 5) {
-          break;
-        }
 
         const macth = local.name.toLowerCase().startsWith(value.toLowerCase());
 
@@ -31,26 +32,27 @@ export default function SearchField(): JSX.Element {
         }
       }
     }
-    return setSearchedPlacesResults(matchingNames)
-// retun CallbackFunction(matchingNames)
-  }
 
-  // console.log(searchedplacesResults)
+    return setStoredata(matchingNames)
+  }
 
   return (
     <>
       <FormControl fullWidth sx={{ m: 0 }}>
-      <InputLabel htmlFor="outlined-adornment-password">Pesquisa</InputLabel>
+        <InputLabel htmlFor="outlined-adornment-password">Pesquisa</InputLabel>
         <OutlinedInput
+          type={searchType == "loja" ? "text" : "number"}
           id="outlined-adornment-amount"
           value={query}
           onChange={handleChange}
           startAdornment={
-            <InputAdornment position="start">
-              <SearchIcon />
-            </InputAdornment>
+            searchType == "loja" ? (
+              <InputAdornment position="start">
+                <SearchIcon />
+              </InputAdornment>
+            ) : false
           }
-          label="Pesquisa"
+          label={searchPlaceholder}
         />
       </FormControl>
     </>
