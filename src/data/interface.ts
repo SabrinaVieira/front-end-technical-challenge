@@ -4,5 +4,5 @@ export interface ILocalities {
     state: string;
     latitude: number;
     longitude: number;
-    revenue: number
+    revenue: number;
   }

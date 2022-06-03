@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import {
   TableContainer,
   TableHead,
@@ -9,11 +9,7 @@ import {
   TablePagination,
   TableFooter,
 } from '@mui/material';
-import localities from '../../data/data.json';
-import { ILocalities } from '../../data/interface';
 import { StoreDataContext } from '../../providers/SearchProvider';
-
-const places = localities.stores
 
 export default function List(): JSX.Element {
   const [page, setPage] = React.useState(0);
